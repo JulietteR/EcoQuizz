@@ -15,13 +15,12 @@ $( function() {
 		getLife();
 
 		$('.section:visible').fadeOut('200', function() {
-		 if (life == 2) {
-	 	gotoSection("death");
+			if (life == 0) {
+				gotoSection("death");
 
-	 } else {
-			gotoSection(section_suivante);
-
-		};
+			} else {
+				gotoSection(section_suivante);
+			};
 		});
 	});
 
@@ -45,7 +44,7 @@ $( function() {
 	}
 	
 	function getLife() {
-	
+
 	}
 	
 	function gainOneLife() {
