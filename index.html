@@ -17,8 +17,13 @@
 	<nav id="secondNav" class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="container">
-					
-					<div class="navbar-brand">Life : <span class="value">--</span>/10</div>
+
+				<div class="navbar-brand">
+					<span class="glyphicon glyphicon-heart">
+						<span class="inside glyphicon glyphicon-heart"></span>
+					</span>
+					Santé : <span class="value">--</span>/10
+				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right ">
@@ -50,25 +55,27 @@
 
 			<action name="start"/>
 
-			<button life="" go="fenetre">Se diriger à la fenêtre</button>
+			<button life="" go="fenetre">Se diriger vers la fenêtre</button>
+			<button life="" go="boulot">Aller au boulot</button>
+
 		</div>
 
 		<div class="section" id="fenetre">
-			Vous vous dirigez vers la fenêtre. Sous vos yeux, le boulevard est étrangement désert, à part un quelques personnes ditubants, probablement sous l'effet de l'alcool.
+			Vous vous dirigez vers la fenêtre. Sous vos yeux, le boulevard est étrangement désert, à part un quelques personnes titubant, probablement sous l'effet de l'alcool.
 			Vous commencez votre service dans peu de temps.
 
 			<action name="start"/>
 
-			<button life="" go="boulot">Allez au boulot</button>
+			<button life="" go="boulot">Aller au boulot</button>
 			<button life="" go="appel">Passer un appel</button>
-			<button life="win" go="medoc">Prendre un médicament contre le mal de tête.</button>
+			<button life="win" go="medoc">Prendre un médicament pour votre mal de tête.</button>
 		</div>
 		<div class="section" id="medoc">
-			Vous prenez un médicament. Très vite, vous vous sentez mieux
+			Vous prenez un médicament. Très vite, vous vous sentez mieux.
 
 			<action name="start"/>
 
-			<button life="" go="boulot">Allez au boulot</button>
+			<button life="" go="boulot">Aller au boulot</button>
 			<button life="" go="appel">Passer un appel</button>
 		</div>
 
@@ -80,10 +87,10 @@
 			<button life="" go="boulot_prudent">Aller au boulot</button>
 		</div>
 		<div class="section" id="boulot_prudent">
-			Vous vous préparez et sortez de votre appartement prudemment. Vous n'avez pas la conscience tranquille, quelque chose vous titille. Vous avez le choix entre prendre l'ascenceur et les escaliers mais votre conscience vous pousse vers ces derniers.
+			Vous vous préparez et sortez de votre appartement prudemment. Vous n'avez pas la conscience tranquille, quelque chose vous titille. Vous avez le choix entre prendre l'ascenceur et les escaliers mais votre subconscient vous pousse vers ces derniers.
 			<action name="start"/>
 
-			<button life="" go="ascenceur">Défier votre conscience et prendre l'ascenceur</button>
+			<button life="" go="ascenceur">Défier votre subconscient et prendre l'ascenceur</button>
 			<button life="" go="escaliers">Vous prenez les escaliers</button>
 		</div>
 		<div class="section" id="boulot">
@@ -94,14 +101,14 @@
 		</div>
 
 		<div class="section" id="ascenceur">
-			L'ascenceur arrive, vous montez dedans et deux femmes au corps en lambaux vous sautent dessus.
+			L'ascenceur arrive, vous montez dedans et deux femmes au corps en lambeaux vous sautent dessus.
 			<action name="start"/>
 
 			<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
 		</div>
 
 		<div class="section" id="escaliers">
-			Vous suivez votre conscience et prenez les escaliers. Vous arrivez au bas de votre immeuble dont le hall est désert.
+			Vous écoutez votre subconscient et prenez les escaliers. Vous arrivez au bas de votre immeuble dont le hall est désert.
 			<action name="start"/>
 
 			<button life="" go="sortir">Sortir avec précautions</button>
@@ -109,15 +116,14 @@
 		<div class="section" id="sortir">
 			Vous faites quelques pas dans la rue, la conscience en alerte.
 			Un homme s'approche au loin en titubant. 
-			A votre droite, se trouve les escaliers d'un batiment.
+			A votre droite, se trouve les escaliers d'un bâtiment.
 			<action name="start"/>
 
-			<button life="" go="monter">Montez les escaliers</button>
+			<button life="" go="monter">Monter les escaliers</button>
 			<button life="" go="aborder">Aborder l'homme</button>
 		</div>
 		<div class="section" id="aborder">
-			Vous interpellez bruyament l'homme. Toutes les personnes de la rue se retourne subitement vers vous et s'approchent en courant.
-			Vous distinguez des lambaux de peau sur le corps de l'homme, vous êtez tétanisé par la peur.
+			Vous interpellez bruyamment l'homme. Toutes les personnes de la rue se retournent subitement vers vous et s'approchent en courant. Vous distinguez des lambeaux de peau sur le corps de l'homme et prenez alors conscience que vous avez affaire à un zombie, vous êtes tétanisé par la peur.
 			<action name="start"/>
 
 			<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
@@ -141,7 +147,7 @@
 			<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
 		</div>
 		<div class="section" id="observation">
-			Vous restez postré dans votre cachette pendant une heure.
+			Vous restez prostré dans votre cachette pendant une heure.
 			A force d'observation, vous constatez que les zombies semblent réagir au son.
 			Rester ainsi sans bouger vous a permis de vous requinquer.
 			<action name="start"/>
@@ -150,10 +156,10 @@
 		</div>
 		<div class="section" id="rentrer">
 			Face à cette situation sans précédent, vous jugez que le plus sage est de rentrer.
-			Force de vos enseignements acquis en observation, vous rentrez discrètement, faisant le moins de bruit possible. Une fois en sécurité dans votre appartement, vous mettez tout en oeuvre pour contacter les forces de l'ordre
+			Force de vos enseignements acquis en observation, vous rentrez discrètement, faisant le moins de bruit possible. Une fois en sécurité dans votre appartement, vous mettez tout en oeuvre pour contacter les Forces de l'Ordre.
 			<action name="start"/>
 
-			<button life="" go="forces_ordre">Contacter les forces de l'ordre</button>
+			<button life="" go="forces_ordre">Contacter les Forces de l'Ordre</button>
 		</div>
 
 
@@ -170,9 +176,9 @@
 		<div class="section" id="fuite_safe_appart">
 			Par le plus grand des miracles vous parvenez sain et sauf à votre appartement ! 
 			Suite à vos aventures, vous décidez qu'il est plus sage de ne pas sortir.
-			Vous mettez tout en oeuvre pour contacter les forces de l'ordre
+			Vous mettez tout en oeuvre pour contacter les Forces de l'Ordre.
 
-			<button  go="forces_ordre">Contacter les forces de l'ordre</button>
+			<button  go="forces_ordre">Contacter les Forces de l'Ordre</button>
 		</div>
 
 		<div class="section" id="forces_ordre">
@@ -185,7 +191,7 @@
 		</div>
 
 		<div class="section" id="mort">
-			Vous tentez de fuir mais vous n'êtes pas assez rapide. Vous vous faites dévorer vivant et vous mourrez dans d'attroces souffrances.
+			Vous tentez de fuir mais vous n'êtes pas assez rapide. Vous vous faites dévorer vivant et vous mourrez dans d'atroces souffrances.
 			Vous commencez votre nouvelle vie dans le rang des zombies.
 			<button life="reset" go="intro">Fin</button>
 		</div>
