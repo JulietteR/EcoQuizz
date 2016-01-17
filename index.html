@@ -2,11 +2,11 @@
 <html>
 <head>
 	<script src="assets\js\jquery.js"></script>
-	<script src="assets\js\bg_player.js"></script>
 
 	<script src="assets\js\zombieRun.js"></script>
 	<link type="text/css" rel="stylesheet" href="assets\bootstrap\dist\css\bootstrap.css" />
 	<link type="text/css" rel="stylesheet" href="assets\css\style.css" />
+	<link type="text/css" rel="stylesheet" href="assets\css\main.css" />
 	<meta lang="fr" xml:lang="fr" content="text/html;charset=UTF-8" http-equiv="Content-Type">
 	<title>Zombie Run</title>
 </head>
@@ -14,169 +14,184 @@
 <body>
 
 
+	<nav id="secondNav" class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="container">
+					
+					<div class="navbar-brand">Life : <span class="value">--</span>/10</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right ">
+						<li class="active ">
+
+						</li>
 
 
-	<div id="status">
-		<div class="life">
-			Life : <span class="value">--</span>/10
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="section" id="intro">
+			<h2>Zombie Run</h2>
+			Run for your life
+			<p>Pensez à activer le son !</p>
+
+			<action name="reset"/>
+
+			<button life="" go="wakeUp">Débutez l'aventure !</button>
+		</div>
+
+
+		<div class="section" id="wakeUp">
+			Votre réveil sonne, vous ouvrez les yeux... Il est 16H et vous avez un immense mal de crâne dû à votre soirée d'hier. La ville est étrangement silencieuse.
+
+			<action name="start"/>
+
+			<button life="" go="fenetre">Se diriger à la fenêtre</button>
+		</div>
+
+		<div class="section" id="fenetre">
+			Vous vous dirigez vers la fenêtre. Sous vos yeux, le boulevard est étrangement désert, à part un quelques personnes ditubants, probablement sous l'effet de l'alcool.
+			Vous commencez votre service dans peu de temps.
+
+			<action name="start"/>
+
+			<button life="" go="boulot">Allez au boulot</button>
+			<button life="" go="appel">Passer un appel</button>
+			<button life="win" go="medoc">Prendre un médicament contre le mal de tête.</button>
+		</div>
+		<div class="section" id="medoc">
+			Vous prenez un médicament. Très vite, vous vous sentez mieux
+
+			<action name="start"/>
+
+			<button life="" go="boulot">Allez au boulot</button>
+			<button life="" go="appel">Passer un appel</button>
+		</div>
+
+		<div class="section" id="appel">
+			Vous appelez un ami, mais il ne décroche pas. Vous tentez d'appeler plusieurs personnes mais personne ne décroche.
+
+			<action name="start"/>
+
+			<button life="" go="boulot_prudent">Aller au boulot</button>
+		</div>
+		<div class="section" id="boulot_prudent">
+			Vous vous préparez et sortez de votre appartement prudemment. Vous n'avez pas la conscience tranquille, quelque chose vous titille. Vous avez le choix entre prendre l'ascenceur et les escaliers mais votre conscience vous pousse vers ces derniers.
+			<action name="start"/>
+
+			<button life="" go="ascenceur">Défier votre conscience et prendre l'ascenceur</button>
+			<button life="" go="escaliers">Vous prenez les escaliers</button>
+		</div>
+		<div class="section" id="boulot">
+			Vous trainez à vous préparer. En retard, vous courrez vers l'ascenceur et ...
+			<action name="start"/>
+
+			<button life="" go="ascenceur">Vous prenez l'ascenceur</button>
+		</div>
+
+		<div class="section" id="ascenceur">
+			L'ascenceur arrive, vous montez dedans et deux femmes au corps en lambaux vous sautent dessus.
+			<action name="start"/>
+
+			<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
+		</div>
+
+		<div class="section" id="escaliers">
+			Vous suivez votre conscience et prenez les escaliers. Vous arrivez au bas de votre immeuble dont le hall est désert.
+			<action name="start"/>
+
+			<button life="" go="sortir">Sortir avec précautions</button>
+		</div>
+		<div class="section" id="sortir">
+			Vous faites quelques pas dans la rue, la conscience en alerte.
+			Un homme s'approche au loin en titubant. 
+			A votre droite, se trouve les escaliers d'un batiment.
+			<action name="start"/>
+
+			<button life="" go="monter">Montez les escaliers</button>
+			<button life="" go="aborder">Aborder l'homme</button>
+		</div>
+		<div class="section" id="aborder">
+			Vous interpellez bruyament l'homme. Toutes les personnes de la rue se retourne subitement vers vous et s'approchent en courant.
+			Vous distinguez des lambaux de peau sur le corps de l'homme, vous êtez tétanisé par la peur.
+			<action name="start"/>
+
+			<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
+		</div>
+
+		<div class="section" id="monter">
+			Vous montez sur les marches et vous vous postez derrière un poteau. Vous observez l'homme passer. Vous constatez que son corps se décompose étrangement.
+			Il vous paraît alors évident que vous avez devant vous un zombie.
+			Rester ainsi sans bouger vous a permis de vous requinquer.
+			<action name="start"/>
+
+			<button life="win" go="rentrer_trop_vite">Vous décidez de rentrer</button>
+			<button life="win" go="observation">Vous observez encore</button>
+		</div>
+		<div class="section" id="rentrer_trop_vite">
+			Vous tentez de rentrer. Vous parvenez à éviter de vous approcher des zombies.
+			Vous parvenez à votre immeuble. Heureux d'être enfin en zone sûre, vous vous précipitez à l'intérieur en grand bruit, dans le hall résonnant. Cependant, le bruit attire les autres résidents. Vous vous retrouvez encerclé dans le hall de l'immeuble.
+
+			<action name="start"/>
+
+			<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
+		</div>
+		<div class="section" id="observation">
+			Vous restez postré dans votre cachette pendant une heure.
+			A force d'observation, vous constatez que les zombies semblent réagir au son.
+			Rester ainsi sans bouger vous a permis de vous requinquer.
+			<action name="start"/>
+
+			<button life="win" go="rentrer">Rentrer</button>
+		</div>
+		<div class="section" id="rentrer">
+			Face à cette situation sans précédent, vous jugez que le plus sage est de rentrer.
+			Force de vos enseignements acquis en observation, vous rentrez discrètement, faisant le moins de bruit possible. Une fois en sécurité dans votre appartement, vous mettez tout en oeuvre pour contacter les forces de l'ordre
+			<action name="start"/>
+
+			<button life="" go="forces_ordre">Contacter les forces de l'ordre</button>
+		</div>
+
+
+
+
+		<div class="section" id="fuite_safe">
+			Vous parvenez à fuir. Vous courrez jusqu'à votre appartement mais vous rencontrez de nouveau des zombies. Aurez-vous assez de chance pour leur échapper une seconde fois ?
+
+
+			<button fuite="seconde_fuite" go="fuite">Vous tentez de vous échapper</button>
+		</div>
+
+
+		<div class="section" id="fuite_safe_appart">
+			Par le plus grand des miracles vous parvenez sain et sauf à votre appartement ! 
+			Suite à vos aventures, vous décidez qu'il est plus sage de ne pas sortir.
+			Vous mettez tout en oeuvre pour contacter les forces de l'ordre
+
+			<button  go="forces_ordre">Contacter les forces de l'ordre</button>
+		</div>
+
+		<div class="section" id="forces_ordre">
+			Vous trouvez un numéro sur internet et vous contactez les forces de l'ordre.
+			On vient vous chercher par hélicoptère, et on vous évacue vers une ville fortifiée.
+
+			<action name="start"/>
+
+			<button life="reset" go="intro">Bravo, vous avez survécu !</button>
+		</div>
+
+		<div class="section" id="mort">
+			Vous tentez de fuir mais vous n'êtes pas assez rapide. Vous vous faites dévorer vivant et vous mourrez dans d'attroces souffrances.
+			Vous commencez votre nouvelle vie dans le rang des zombies.
+			<button life="reset" go="intro">Fin</button>
 		</div>
 	</div>
-	
-	<div class="section" id="intro">
-		<h2>Zombie Run</h2>
-		Run for your life
-		<p>Pensez à activer le son !</p>
-		
-		<action name="reset"/>
-		
-		<button life="" go="wakeUp">Débutez l'aventure !</button>
-	</div>
-	
-	
-	<div class="section" id="wakeUp">
-		Votre réveil sonne, vous ouvrez les yeux... Il est 16H et vous avez une immense gueule de bois. La ville est étrangement silencieuse.
-		
-		<action name="start"/>
-		
-		<button life="" go="fenetre">Se diriger à la fenêtre</button>
-	</div>
-	
-	<div class="section" id="fenetre">
-		Vous vous dirigez vers la fenêtre. Sous vos yeux, le boulevard est étrangement désert, à part un quelques personnes ditubants, probablement sous l'effet de l'alcool.
-		Vous commencez votre service dans peu de temps.
-		
-		<action name="start"/>
-		
-		<button life="" go="boulot">Allez au boulot</button>
-		<button life="" go="appel">Passer un appel</button>
-		<button life="win" go="medoc">Prendre un médicament contre le mal de tête.</button>
-	</div>
-	<div class="section" id="medoc">
-		Vous prenez un médicament. Très vite, vous vous sentez mieux
-		
-		<action name="start"/>
-		
-		<button life="" go="boulot">Allez au boulot</button>
-		<button life="" go="appel">Passer un appel</button>
-	</div>
-
-	<div class="section" id="appel">
-		Vous appelez un ami, mais il ne décroche pas. Vous tentez d'appeler plusieurs personnes mais personne ne décroche.
-		
-		<action name="start"/>
-		
-		<button life="" go="boulot_prudent">Aller au boulot</button>
-	</div>
-	<div class="section" id="boulot_prudent">
-		Vous vous préparez et sortez de votre appartement prudemment. Vous n'avez pas la conscience tranquille, quelque chose vous titille. Vous avez le choix entre prendre l'ascenceur et les escaliers mais votre conscience vous pousse vers ces derniers.
-		<action name="start"/>
-		
-		<button life="" go="ascenceur">Défier votre conscience et prendre l'ascenceur</button>
-		<button life="" go="escaliers">Vous prenez les escaliers</button>
-	</div>
-	<div class="section" id="boulot">
-		Vous trainez à vous préparer. En retard, vous courrez vers l'ascenceur et ...
-		<action name="start"/>
-		
-		<button life="" go="ascenceur">Vous prenez l'ascenceur</button>
-	</div>
-
-	<div class="section" id="ascenceur">
-		L'ascenceur arrive, vous montez dedans et deux femmes au corps en lambaux vous sautent dessus.
-		<action name="start"/>
-		
-		<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
-	</div>
-
-	<div class="section" id="escaliers">
-		Vous suivez votre conscience et prenez les escaliers. Vous arrivez au bas de votre immeuble dont le hall est désert.
-		<action name="start"/>
-		
-		<button life="" go="sortir">Sortir avec précautions</button>
-	</div>
-	<div class="section" id="sortir">
-		Vous faites quelques pas dans la rue, la conscience en alerte.
-		Un homme s'approche au loin en titubant. 
-		A votre droite, se trouve les escaliers d'un batiment.
-		<action name="start"/>
-		
-		<button life="" go="monter">Montez les escaliers</button>
-		<button life="" go="aborder">Aborder l'homme</button>
-	</div>
-	<div class="section" id="aborder">
-		Vous interpellez bruyament l'homme. Toutes les personnes de la rue se retourne subitement vers vous et s'approchent en courant.
-		Vous distinguez des lambaux de peau sur le corps de l'homme, vous êtez tétanisé par la peur.
-		<action name="start"/>
-		
-		<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
-	</div>
-
-	<div class="section" id="monter">
-		Vous montez sur les marches et vous vous postez derrière un poteau. Vous observez l'homme passer. Vous constatez que son corps se décompose étrangement.
-		Il vous paraît alors évident que vous avez devant vous un zombie.
-		Rester ainsi sans bouger vous a permis de vous requinquer.
-		<action name="start"/>
-		
-		<button life="win" go="rentrer_trop_vite">Vous décidez de rentrer</button>
-		<button life="win" go="observation">Vous observez encore</button>
-	</div>
-	<div class="section" id="rentrer_trop_vite">
-		Vous tentez de rentrer. Vous parvenez à éviter de vous approcher des zombies.
-		Vous parvenez à votre immeuble. Heureux d'être enfin en zone sûre, vous vous précipitez à l'intérieur en grand bruit, dans le hall résonnant. Cependant, le bruit attire les autres résidents. Vous vous retrouvez encerclé dans le hall de l'immeuble.
-
-		<action name="start"/>
-		
-		<button life="" fuite="premiere_fuite" go="fuite">Vous tentez de fuir</button>
-	</div>
-	<div class="section" id="observation">
-		Vous restez postré dans votre cachette pendant une heure.
-		A force d'observation, vous constatez que les zombies semblent réagir au son.
-		Rester ainsi sans bouger vous a permis de vous requinquer.
-		<action name="start"/>
-		
-		<button life="win" go="rentrer">Rentrer</button>
-	</div>
-	<div class="section" id="rentrer">
-		Face à cette situation sans précédent, vous jugez que le plus sage est de rentrer.
-		Force de vos enseignements acquis en observation, vous rentrez discrètement, faisant le moins de bruit possible. Une fois en sécurité dans votre appartement, vous mettez tout en oeuvre pour contacter les forces de l'ordre
-		<action name="start"/>
-		
-		<button life="" go="forces_ordre">Contacter les forces de l'ordre</button>
-	</div>
-	
 
 
-
-	<div class="section" id="fuite_safe">
-		Vous parvenez à fuir. Vous courrez jusqu'à votre appartement mais vous rencontrez de nouveau des zombies. Aurez-vous assez de chance pour leur échapper une seconde fois ?
-		
-
-		<button fuite="seconde_fuite" go="fuite">Vous tentez de vous échapper</button>
-	</div>
-
-
-	<div class="section" id="fuite_safe_appart">
-		Par le plus grand des miracles vous parvenez sain et sauf à votre appartement ! 
-		Suite à vos aventures, vous décidez qu'il est plus sage de ne pas sortir.
-		Vous mettez tout en oeuvre pour contacter les forces de l'ordre
-
-		<button  go="forces_ordre">Contacter les forces de l'ordre</button>
-	</div>
-
-	<div class="section" id="forces_ordre">
-		Vous trouvez un numéro sur internet et vous contactez les forces de l'ordre.
-		On vient vous chercher par hélicoptère, et on vous évacue vers une ville fortifiée.
-		
-		<action name="start"/>
-		
-		<button life="reset" go="intro">Bravo, vous avez survécu !</button>
-	</div>
-	
-	<div class="section" id="mort">
-		Vous tentez de fuir mais vous n'êtes pas assez rapide. Vous vous faites dévorer vivant et vous mourrez dans d'attroces souffrances.
-		Vous commencez votre nouvelle vie dans le rang des zombies.
-		<button life="reset" go="intro">Fin</button>
-	</div>
 
 	
 </body>
