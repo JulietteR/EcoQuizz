@@ -1,18 +1,13 @@
-$( function() {
+$(document).ready(function() {
+
 	var buttons = $(".section button");
 	var status = $("#status");
 	var life = 4;
-
-	/*for (var life = 1; life <= 10; life++) {
-		randomRunAway();
-		var ranRun = life + Math.floor(Math.random() * 10);
-		if (ranRun > 10) {
-			//console.log(life + "=" + ranRun);
-			//gotoSection("death");
-		}
-
-	};
-	*/
+	var soundZombie = document.createElement('audio');
+	soundZombie.setAttribute('src', 'assets/music/zombie.mp3');
+	var backgroundSound = document.createElement('audio');
+	backgroundSound.setAttribute('src', 'assets/music/Anxiety.mp3');
+	backgroundSound.setAttribute('autoplay', 'autoplay');
 
 
 	startGame();
@@ -21,7 +16,12 @@ $( function() {
 	buttons.click( function() {
 		var section_suivante = $(this).attr("go");
 		if (section_suivante == "fuite") {
-			randomRunAway();		
+			randomRunAway();
+
+		}
+		if (section_suivante == "intro") {
+			soundZombie.pause();
+
 		}
 
 		var etat = $(this).attr("life");
@@ -32,6 +32,8 @@ $( function() {
 		$('.section:visible').fadeOut('200', function() {
 			if (life == 0 && section_suivante != "intro") {
 				gotoSection("mort");
+				soundZombie.play();
+
 
 			} else if (nb_fuite == null) {
 				gotoSection(section_suivante);
@@ -77,7 +79,7 @@ $( function() {
 	}
 	
 	function resetLife() {
-			life = 1;		
+		life = 1;		
 
 	}
 	function loseLife() {
@@ -113,5 +115,8 @@ $( function() {
 		$('.section').hide();
 		$('#death').show();
 	}
-	
-} );
+
+
+
+
+});
